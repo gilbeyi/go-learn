@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"maps"
 	"slices"
 )
 
@@ -22,7 +23,7 @@ func literal() {
 	println(rune1)
 }
 
-func compositeTypeArrayAndSlice() {
+func arraySlice() {
 	var array = [3]int{10, 20, 30}        // 配列
 	var slice = []int{10, 20, 30}         // slice
 	var sliceIndex = []int{10, 5: 20, 30} // slice
@@ -71,7 +72,56 @@ func compositeTypeArrayAndSlice() {
 	fmt.Println("copy slice to sliceCopy", sliceCopy)
 }
 
+func arrayMap() {
+	var nilMap map[string]int
+	fmt.Println("nilMap", nilMap)
+	fmt.Println("nilMap isNil", nilMap == nil)
+
+	initMap := map[string]int{}
+	fmt.Println("initMap", initMap)
+	fmt.Println("initMap isNil", initMap == nil)
+
+	users := map[string][]string{
+		"admin": {"admin user", "power user"},
+		"write": {"write user"},
+		"read":  {"read user"},
+	}
+	fmt.Println("users", users)
+
+	wins := map[string]int{}
+	wins["dogers"] = 25
+	wins["padres"] = 20
+	wins["angels"] = 10
+	fmt.Println("wins", wins)
+
+	valueDogers, matchDogers := wins["dogers"]
+	fmt.Println("valueDogers, matchDogers", valueDogers, matchDogers)
+	valueYankees, matchYankees := wins["yankees"]
+	fmt.Println("valueYankees, matchYankees", valueYankees, matchYankees)
+
+	delete(wins, "angels")
+	fmt.Println("delete wins", wins)
+
+	clear(wins)
+	fmt.Println("clear wins", wins)
+	fmt.Println("wins isNil", wins == nil)
+
+	mapA := map[string]int{
+		"a": 1, "b": 2,
+	}
+	mapB := map[string]int{
+		"a": 1, "b": 2,
+	}
+	mapC := map[string]int{
+		"a": 2, "b": 3,
+	}
+	fmt.Println("mapA == mapB", maps.Equal(mapA, mapB))
+	fmt.Println("mapA == mapC", maps.Equal(mapA, mapC))
+
+}
+
 func main() {
 	// literal()
-	compositeTypeArrayAndSlice()
+	// arraySlice()
+	arrayMap()
 }
