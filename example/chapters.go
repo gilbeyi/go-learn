@@ -120,8 +120,31 @@ func arrayMap() {
 
 }
 
+func learnStruct() {
+	type typePerson struct {
+		name string
+		age  int
+	}
+
+	m := typePerson{
+		"man",
+		30,
+	}
+	fmt.Println("m: person", m)
+	fmt.Println("m.name: person", m.name)
+
+	var person struct {
+		name string
+		age  int
+	}
+	person.name = "man"
+	person.age = 20
+	fmt.Println("person", person)
+}
+
 func main() {
 	// literal()
 	// arraySlice()
-	arrayMap()
+	// arrayMap()
+	learnStruct()
 }
